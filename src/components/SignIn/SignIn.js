@@ -48,6 +48,7 @@ const LoginPage = () => {
   const handleSubmit = () => {
     // Handle sign-in logic here
     console.log('Email submitted:', email);
+    alert('Invalid email!'); 
   };
 
   return (
