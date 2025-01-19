@@ -53,6 +53,10 @@ const Section = styled.div`
   width: 80%; 
   margin-top: 40px; 
   text-align: left; 
+  border: solid;
+  border-radius: 1%;
+  border-color:    #e8e0d3;
+  padding: 0 2rem;
 `;
 
 const SectionTitle = styled.div`
@@ -66,6 +70,7 @@ const ImageRow = styled.div`
   display: flex;
   justify-content: space-between; 
   flex-wrap: wrap; 
+  cursor: pointer; 
 `;
 
 const ImageWrapper = styled.div`

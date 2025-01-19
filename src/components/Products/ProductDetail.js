@@ -45,7 +45,10 @@ const Image = styled.img`
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column; /* Stack text elements vertically */
-  align-items: center; /* Center text within the container */
+  align-items: center; /* Center text within the container */  border: solid;
+  border-radius: 1%;
+  border-color:    #e8e0d3;
+  padding: 3rem 3rem;
 `;
 
 const AddToCartButton = styled.button`

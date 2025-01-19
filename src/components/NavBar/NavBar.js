@@ -8,7 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faBasketShopping,faBagShopping  } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; // Use solid version
+import { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`
+  a {
+    text-decoration: none; 
+  }
+
+`;
 
 const Navbar = styled.nav`
   display: flex;
@@ -24,11 +31,13 @@ const Navbar = styled.nav`
   z-index: 1000; /* Ensures the navbar is above other content */
   height: 60px; /* Set a fixed height for the navbar */
   font-family: 'quicksand', sans-serif;
+
 `;
+
 
 const Left = styled.div`
   flex: 1;
-  text-align: left; /* Align text to the left */
+  text-align: left; /* Align text to the left */ 
 `;
 
 const ShopText = styled.span`
@@ -81,7 +90,8 @@ const NavigationBar = () => {
   }, []);
 
   return (
-    <Fade duration={3000} triggerOnce>
+    <Fade duration={3000} triggerOnce>     
+     <GlobalStyle />
       <Navbar>
         <Left>
         <Link to="/WhoAreWe">

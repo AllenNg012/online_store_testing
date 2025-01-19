@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 
 // Styled components
 const CartContainer = styled.div`
-  padding: 150px 300px;
   font-family: 'quicksand', sans-serif;
   background-color: #2E323B;
-  color: #C2C2C2;
+  color: #C2C2C2;  border: solid;
+  border-radius: 1%;
+  border-color:    #e8e0d3;
+  padding: 2rem 2.5rem;
+  margin: 10rem 15rem;
 `;
 
 const Container = styled.div`
