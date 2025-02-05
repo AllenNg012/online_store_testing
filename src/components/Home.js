@@ -70,7 +70,7 @@ const Slideshow = styled.div`
 `;
 
 const Title = styled.div`
-  margin: 20px 0;
+  margin: 40px 0 20px 0;
   font-size: 24px; 
   text-align: left; 
   color: #C2C2C2; 
