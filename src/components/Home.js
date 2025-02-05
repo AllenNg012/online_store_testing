@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   flex-direction: column; 
   align-items: flex-start; 
   width: 100%; 
-  max-width: 900px; 
+  max-width: 950px; 
 `;
 
 const Slideshow = styled.div`
@@ -71,7 +71,7 @@ const Slideshow = styled.div`
 
 const Title = styled.div`
   margin: 40px 0 20px 0;
-  font-size: 24px; 
+  font-size: 36px; 
   text-align: left; 
   color: #C2C2C2; 
   width: 100%; 
