@@ -13,7 +13,7 @@ import 'typeface-poppins';
 import 'typeface-quicksand';
 import 'typeface-roboto';
 import { Link } from 'react-router-dom';  
-import { Zoom, Slide } from 'react-awesome-reveal';  
+import {   Slide ,Fade} from 'react-awesome-reveal';  
 
 // Styled components
 const Container = styled.div`
@@ -194,7 +194,7 @@ const Home = () => {
   return (
     <BigContainer>
     <Container>
-      <Zoom duration={1000} triggerOnce>
+      <Fade duration={4000} triggerOnce>
         <Wrapper>
           <Slideshow>
             {images.map((img, index) => (
@@ -230,7 +230,7 @@ const Home = () => {
             ))}
           </GridContainer>
         </Wrapper>
-      </Zoom>
+      </Fade>
     </Container>
     </BigContainer>
   );
