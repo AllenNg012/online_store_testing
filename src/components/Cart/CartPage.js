@@ -7,12 +7,24 @@ import { Link } from 'react-router-dom';
 const CartContainer = styled.div`
   font-family: 'quicksand', sans-serif;
   background-color: #2E323B;
-  color: #C2C2C2;  border: solid;
+  color: #C2C2C2;
+  border: solid;
   border-radius: 1%;
-  border-color:    #e8e0d3;
-  padding: 2rem 2.5rem;
-  margin: 10rem 15rem;
+  border-color: #e8e0d3;
+  padding: 2rem;
+  margin: 10rem auto;
+  max-width: 1000px;
+  width: 90%;
+  @media (max-width: 768px) {
+    margin: 5rem auto;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
+
 
 const Container = styled.div`
   padding: 20px;
@@ -20,46 +32,87 @@ const Container = styled.div`
   background-color: #2E323B;
   color: #C2C2C2;
   min-height: 100vh;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    padding-top: 7rem;
+  }
 `;
 
 const CartItem = styled.div`
   display: grid;
-  grid-template-columns: 80px 2fr 0.2fr 0.4fr 1fr; /* Four columns for image, name, delete, quantity, and price */
-  align-items: center; /* Center align items vertically */
+  grid-template-columns: 80px 1fr auto auto auto;
+  align-items: center;
   margin: 10px 0;
-  border-bottom: 1px solid #C2C2C2; /* Add a bottom border for separation */
-  padding: 10px 0; /* Add some padding */
-  gap: 10px; /* Space between columns */
+  border-bottom: 1px solid #C2C2C2;
+  padding: 10px 0;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 60px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    text-align: center;
+  }
 `;
+
 
 const ItemImage = styled.img`
-  width: 80px; /* Set a fixed width for the image */
-  height: 80px; /* Set a fixed height for the image */
-  border-radius: 5px; /* Optional: round the corners of the image */
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+
+  @media (max-width: 480px) {
+    margin: 0 auto;
+  }
 `;
 
+
 const ItemName = styled.span`
-  font-size: 4vh;
+  font-size: 2.5vh;
+
+  @media (max-width: 480px) {
+    font-size: 2vh;
+  }
 `;
 
 const ItemPrice = styled.span`
-  font-size: 4vh;
-  text-align: right; /* Align price to the right */
+  font-size: 2.5vh;
+  text-align: right;
+
+  @media (max-width: 480px) {
+    text-align: center;
+    font-size: 2vh;
+  }
 `;
+
 
 const CheckoutButton = styled.button`
   padding: 10px 20px;
   font-size: 2vh;
   color: white;
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 1rem;
 
   &:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    font-size: 1.8vh;
   }
 `;
+
 
 const DeleteButton = styled.button`
   padding: 5px 10px;
@@ -91,9 +144,15 @@ const QuantityButton = styled.button`
 
 const TotalPrice = styled.h2`
   margin-top: 20px;
-  text-align: right; /* Align total price to the right */
-  font-size: 4vh;
+  text-align: right;
+  font-size: 3vh;
+
+  @media (max-width: 480px) {
+    text-align: center;
+    font-size: 2.5vh;
+  }
 `;
+
 
 const CartPage = () => {
   const { cart, totalPrice, removeFromCart, updateCartQuantity } = useCart();
