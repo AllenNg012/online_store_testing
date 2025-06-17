@@ -1,74 +1,98 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';  
 import logo from '../Pic/logo3.png'; 
 import 'typeface-quicksand';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { faBasketShopping,faBagShopping  } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; // Use solid version
-import { createGlobalStyle } from 'styled-components';
+import { faCartShopping, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const GlobalStyle = createGlobalStyle`
   a {
-    text-decoration: none; 
+    text-decoration: none;
   }
-
 `;
 
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 200px;
-  background-color: transparent; /* No background color */
-  box-shadow: none; /* Remove shadow if desired */
-  position: fixed; /* Fixes the navbar to the top */
-  top: 0; /* Aligns to the top */
-  left: 0; /* Aligns to the left */
-  right: 0; /* Aligns to the right */
-  z-index: 1000; /* Ensures the navbar is above other content */
-  height: 60px; /* Set a fixed height for the navbar */
+  padding: 10px 160px;
+  background-color: transparent;
+  box-shadow: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 60px;
   font-family: 'quicksand', sans-serif;
 
-`;
+  @media (max-width: 1024px) {
+    padding: 10px 100px;
+  }
 
+  @media (max-width: 768px) {
+    padding: 10px 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+  }
+`;
 
 const Left = styled.div`
   flex: 1;
-  text-align: left; /* Align text to the left */ 
+  text-align: left;
 `;
 
 const ShopText = styled.span`
-  font-size: 16px; /* Font size for "Shop" */
-  color: white; /* Change color to ensure visibility */
+  font-size: 14px;
+  color: white;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const Center = styled.div`
   flex: 2;
-  text-align: center; /* Center alignment */
-  transition: opacity 1s ease; /* Smooth transition for opacity */
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)}; /* Control opacity */
+  text-align: center;
+  transition: opacity 1s ease;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
 `;
 
 const Logo = styled.img`
-  max-height: 130px; /* Maximum height for the logo */
-  height: auto; /* Maintain aspect ratio */
-  width: auto; /* Maintain aspect ratio */
-  margin-top: 70px;
+  max-height: 120px;
+  margin-top: 60px;
+
+  @media (max-width: 768px) {
+    max-height: 90px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 480px) {
+    max-height: 70px;
+    margin-top: 30px;
+  }
 `;
 
 const Right = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-end; /* Align icons to the right */
+  justify-content: flex-end;
 `;
+
 const Icon = styled.span`
-  font-size: 15px; /* Size for the icons */
-  margin-left: 15px; /* Space between icons */
-  cursor: pointer; /* Pointer cursor for icons */
-  color: white; /* Change color to ensure visibility */
+  font-size: 16px;
+  margin-left: 15px;
+  cursor: pointer;
+  color: white;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-left: 10px;
+  }
 `;
 
 const NavigationBar = () => {
@@ -76,46 +100,31 @@ const NavigationBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsVisible(false); // Hide logo when scrolling
-      } else {
-        setIsVisible(true); // Show logo when at the top
-      }
+      setIsVisible(window.scrollY === 0);
     };
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <Fade duration={3000} triggerOnce>     
-     <GlobalStyle />
+    <Fade duration={3000} triggerOnce>
+      <GlobalStyle />
       <Navbar>
         <Left>
-        <Link to="/WhoAreWe">
-          <ShopText>Us</ShopText>
+          <Link to="/WhoAreWe">
+            <ShopText>Us</ShopText>
           </Link>
         </Left>
         <Center isVisible={isVisible}>
           <Link to="/">
-            <Logo src={logo} alt="Logo" /> {/* Logo image */}
+            <Logo src={logo} alt="Logo" />
           </Link>
         </Center>
         <Right>
-        <Link to="/SignIn" >
-        <Icon><FontAwesomeIcon icon={faUser} /></Icon>
-          </Link>
-          <Link to="/Products">
-          <Icon><FontAwesomeIcon icon={faBagShopping} /></Icon>
-          </Link>
-          <Link to="/Cart">
-            <Icon>
-              <FontAwesomeIcon icon={faCartShopping} />
-            </Icon>
-          </Link>
-         </Right>
+          <Link to="/SignIn"><Icon><FontAwesomeIcon icon={faUser} /></Icon></Link>
+          <Link to="/Products"><Icon><FontAwesomeIcon icon={faBagShopping} /></Icon></Link>
+          <Link to="/Cart"><Icon><FontAwesomeIcon icon={faCartShopping} /></Icon></Link>
+        </Right>
       </Navbar>
     </Fade>
   );
