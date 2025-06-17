@@ -101,7 +101,6 @@ const ImageRow = styled.div`
   display: flex;
   gap: 100px;
   overflow-x: scroll;
-
  
 `;
 
